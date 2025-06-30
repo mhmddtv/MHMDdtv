@@ -1,32 +1,23 @@
+/* Add to style.css */
+
 body {
-    font-family: 'Cairo', sans-serif;
-    background-color: #e6f3ff; /* لون أزرق فاتح مريح */
-    color: #34495e;
-    line-height: 1.6;
+    font-family: 'Cairo', sans-serif; /* استخدام خط القاهرة */
+    direction: rtl; /* اتجاه النص من اليمين لليسار */
+    text-align: right; /* محاذاة النص لليمين */
+    background-color: #f4f7f6;
     margin: 0;
     padding: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    min-height: 100vh;
-    box-sizing: border-box;
-    direction: rtl; /* لغة عربية */
-    text-align: right; /* محاذاة النص لليمين */
+    line-height: 1.6;
+    color: #333;
 }
 
-/* استيراد خط كايرو وأيقونات Font Awesome */
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
-@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
-
 .container {
-    background-color: #ffffff;
-    padding: 35px;
-    border-radius: 15px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-    max-width: 650px; /* مساحة أكبر قليلاً للمحتوى */
-    width: 100%;
-    box-sizing: border-box;
-    margin-bottom: 20px;
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
 .header-group {
@@ -35,80 +26,121 @@ body {
 }
 
 .group-logo {
-    width: 100px; /* حجم معقول للشعار */
-    height: auto;
-    margin-bottom: 10px;
+    width: 120px; /* حجم الشعار */
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+    border: 3px solid #007bff; /* إطار حول الشعار */
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.3);
 }
 
 h1 {
     color: #007bff;
-    margin-top: 10px;
     margin-bottom: 5px;
-    font-size: 2em;
+    font-size: 2.2em;
 }
 
 .group-name {
-    color: #5a6268;
+    color: #555;
     font-size: 1.1em;
-    margin-bottom: 10px;
+    margin-top: 0;
+    font-weight: bold;
 }
 
 .description {
-    color: #6c757d;
-    font-size: 0.95em;
-    margin-bottom: 20px;
+    color: #666;
+    font-size: 1em;
+    margin-top: 10px;
+    line-height: 1.5;
 }
 
-.input-section, .record-section {
-    background-color: #f8f9fa;
+.input-section {
+    background-color: #f0f8ff; /* لون فاتح لقسم الإدخال */
     padding: 25px;
     border-radius: 10px;
-    margin-bottom: 25px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    margin-bottom: 30px;
+    border: 1px dashed #a8d6ff; /* حدود متقطعة */
 }
 
-.input-section h2, .record-section h2 {
-    color: #0056b3;
-    margin-top: 0;
-    margin-bottom: 20px;
-    font-size: 1.7em;
-    border-bottom: 2px solid #007bff;
-    padding-bottom: 10px;
-}
-
-.input-section h3 {
-    color: #007bff;
-    margin-top: 25px;
-    margin-bottom: 15px;
-    font-size: 1.4em;
-}
-
-.input-section label {
+.input-section > label { /* label لتاريخ اليوم */
     display: block;
-    width: 100%;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #333;
+    font-size: 1.1em;
+}
+
+.input-section input[type="date"] {
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: calc(100% - 30px); /* Adjust width considering padding */
+    margin-bottom: 20px;
+    font-size: 1em;
+    box-sizing: border-box;
+}
+
+.measurement-block {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.measurement-block h4 {
+    margin-top: 0;
+    color: #007bff; /* A nice blue for titles */
+    font-size: 1.1em;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.input-row {
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap to the next line on smaller screens */
+    gap: 15px; /* Space between field containers */
+    align-items: flex-end; /* Align labels and inputs nicely at the bottom */
+}
+
+.field-container {
+    display: flex;
+    flex-direction: column; /* Stack label and input vertically */
+    flex: 1; /* Allow fields to grow and shrink */
+    min-width: 120px; /* Minimum width for each field to prevent too much squishing */
+}
+
+.field-container label {
     margin-bottom: 5px;
     font-weight: bold;
     color: #555;
-    text-align: right;
-    box-sizing: border-box;
+    white-space: nowrap; /* Prevent labels from wrapping */
 }
 
-.input-section input[type="number"],
-.input-section input[type="time"],
-.input-section input[type="date"] {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ced4da;
+.field-container input[type="number"],
+.field-container input[type="time"],
+.field-container input[type="text"] { /* إضافة input[type="text"] لـ carbRatio */
+    padding: 8px 12px;
+    border: 1px solid #ccc;
     border-radius: 5px;
-    box-sizing: border-box;
-    font-size: 1em;
-    text-align: right;
-    direction: rtl;
+    font-size: 0.95em;
+    width: 100%; /* Ensure inputs take full width of their container */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
 }
 
-button {
+.radio-group {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.radio-group input[type="radio"] {
+    margin-left: 5px; /* مسافة بين الزر والنص */
+}
+
+.action-button {
     background-color: #007bff;
     color: white;
     padding: 12px 20px;
@@ -116,283 +148,216 @@ button {
     border-radius: 5px;
     cursor: pointer;
     font-size: 1.1em;
-    width: 100%;
     margin-top: 20px;
+    margin-left: 10px; /* مسافة بين الأزرار */
     transition: background-color 0.3s ease;
 }
 
-button:hover {
+.action-button:hover {
     background-color: #0056b3;
 }
 
-.status-message {
+.clear-button {
+    background-color: #6c757d; /* لون رمادي لزر المسح */
+}
+
+.clear-button:hover {
+    background-color: #5a6268;
+}
+
+.delete-all-button {
+    background-color: #dc3545; /* لون أحمر لزر الحذف الكلي */
+}
+
+.delete-all-button:hover {
+    background-color: #c82333;
+}
+
+#statusMessage {
     padding: 10px;
-    margin-top: 15px;
+    margin-top: 20px;
     border-radius: 5px;
-    font-weight: bold;
+    display: none; /* مخفي افتراضياً */
     text-align: center;
-    display: none;
-    font-size: 1.1em;
-    direction: rtl;
+    font-weight: bold;
 }
 
 .status-message.success {
     background-color: #d4edda;
     color: #155724;
-    border: 1px solid #28a745;
-}
-
-.status-message.warning {
-    background-color: #ffeeba;
-    color: #856404;
-    border: 1px solid #ffc107;
+    border: 1px solid #c3e6cb;
 }
 
 .status-message.error {
     background-color: #f8d7da;
     color: #721c24;
-    border: 1px solid #dc3545;
+    border: 1px solid #f5c6cb;
 }
 
-.medical-note {
-    background-color: #e2f0fb;
-    border: 1px solid #b3d7ff;
-    border-radius: 8px;
-    padding: 15px;
-    margin-top: 25px;
-    font-size: 0.9em;
-    color: #336699;
-    line-height: 1.5;
-    text-align: right;
+.status-message.info {
+    background-color: #d1ecf1;
+    color: #0c5460;
+    border: 1px solid #bee5eb;
 }
 
-.medical-note strong {
-    color: #0056b3;
-}
-
-/* تنسيقات الجدول الجديد لسجل القياسات */
-.meal-history-container {
-    background-color: #ffffff;
-    border: 1px solid #cce5ff;
+.records-section {
+    margin-top: 30px;
+    background-color: #fdfdfd;
+    padding: 25px;
     border-radius: 10px;
-    padding: 15px;
-    margin-top: 20px;
-    max-height: 500px; /* ارتفاع أقصى للسجل مع شريط تمرير */
-    overflow-y: auto; /* إضافة شريط تمرير عمودي */
-    overflow-x: auto; /* شريط تمرير أفقي للجدول الكبير */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
 
-.meal-history-table {
-    width: 100%;
-    border-collapse: collapse; /* لإزالة الفراغات بين حدود الخلايا */
-    margin-top: 15px;
-    font-size: 0.9em;
-    min-width: 800px; /* لتجنب تضييق الجدول جداً على الشاشات الصغيرة */
+.records-section h2 {
+    color: #007bff;
+    text-align: center;
+    margin-bottom: 25px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
 }
 
-.meal-history-table th,
-.meal-history-table td {
-    border: 1px solid #e0e0e0;
+.filter-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
     padding: 10px;
-    text-align: right;
-    vertical-align: middle; /* محاذاة عمودية للمحتوى */
+    background-color: #f2f2f2;
+    border-radius: 8px;
 }
 
-.meal-history-table th {
-    background-color: #e9f5ff; /* لون خلفية لرأس الجدول */
-    color: #0056b3;
+.filter-controls label {
     font-weight: bold;
-    position: sticky; /* لجعل الرؤوس ثابتة عند التمرير */
-    top: 0;
-    z-index: 1;
+    color: #333;
 }
 
-.meal-history-table tr:nth-child(even) {
-    background-color: #f8faff; /* لون خلفية للصفوف الزوجية */
+.filter-controls input[type="date"] {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    flex-grow: 1; /* يسمح للحقل بأن يأخذ مساحة أكبر */
+    max-width: 200px; /* يحدد أقصى عرض */
 }
 
-.meal-history-table tr:hover {
-    background-color: #eef8ff; /* لون عند تمرير المؤشر على الصف */
+.records-display {
+    border-top: 1px solid #eee;
+    padding-top: 20px;
 }
 
-/* زر الحذف داخل الصف */
-.meal-history-table .delete-record-button {
-    background-color: #dc3545;
+.record-item {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    padding: 20px;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.05);
+    position: relative; /* لتحديد موقع زر الحذف */
+}
+
+.record-item h3 {
+    color: #0056b3;
+    margin-top: 0;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px dashed #e0e0e0;
+    font-size: 1.2em;
+}
+
+.record-details {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* 250px كانت كبيرة */
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.detail-block {
+    background-color: #f4f4f4;
+    border-radius: 5px;
+    padding: 10px;
+    border: 1px solid #eee;
+}
+
+.detail-block h4 {
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 8px;
+    font-size: 1em;
+    border-bottom: none; /* إزالة الخط السفلي هنا */
+    padding-bottom: 0;
+}
+
+.detail-block p {
+    margin: 5px 0;
+    font-size: 0.9em;
+    color: #666;
+}
+
+.delete-record-btn {
+    background-color: #dc3545; /* أحمر */
     color: white;
     border: none;
-    border-radius: 4px;
-    padding: 6px 10px;
+    padding: 8px 15px;
+    border-radius: 5px;
     cursor: pointer;
-    font-size: 0.8em;
-    width: auto; /* لجعله يتناسب مع المحتوى */
-    margin: 0; /* إزالة أي هوامش غير مرغوبة */
-    display: inline-block; /* ليكون بجانب الأزرار الأخرى إن وجدت */
-}
-
-.meal-history-table .delete-record-button:hover {
-    background-color: #c82333;
-}
-
-.clear-button {
-    background-color: #ffc107;
-    color: #343a40;
-    margin-bottom: 10px;
-}
-
-.clear-button:hover {
-    background-color: #e0a800;
-}
-
-/* Modal for confirmation */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.4);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.modal-content {
-    background-color: #fefefe;
-    margin: auto;
-    padding: 25px;
-    border: 1px solid #888;
-    border-radius: 10px;
-    width: 80%;
-    max-width: 400px;
-    text-align: center;
-    position: relative;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.close-button {
-    color: #aaa;
-    position: absolute;
-    top: 10px;
-    left: 15px;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.close-button:hover,
-.close-button:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.confirm-delete-button {
-    background-color: #dc3545;
-    width: auto;
-    padding: 10px 20px;
-    margin: 10px 5px;
-}
-
-.confirm-delete-button:hover {
-    background-color: #c82333;
-}
-
-.cancel-delete-button {
-    background-color: #6c757d;
-    width: auto;
-    padding: 10px 20px;
-    margin: 10px 5px;
-}
-
-.cancel-delete-button:hover {
-    background-color: #5a6268;
-}
-
-/* Iraqi Touch Section */
-.iraqi-touch-section {
-    background-color: #d4edda;
-    border: 1px solid #28a745;
-    border-radius: 10px;
-    padding: 20px;
-    margin-bottom: 25px;
-    text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.iraqi-touch-section h2 {
-    color: #155724;
-    margin-top: 0;
-    font-size: 1.5em;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #28a745;
-}
-
-.iraqi-touch-section p {
-    color: #155724;
-    font-size: 1.1em;
-    line-height: 1.8;
-}
-
-/* Medical Guidance Note */
-.medical-guidance-note {
-    background-color: #fff3cd;
-    border: 1px solid #ffc107;
-    border-radius: 10px;
-    padding: 20px;
-    margin-top: 25px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.medical-guidance-note h3 {
-    color: #856404;
-    margin-top: 0;
-    font-size: 1.4em;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #ffc107;
-}
-
-.medical-guidance-note p,
-.medical-guidance-note ul {
-    color: #856404;
-    font-size: 1.0em;
-    line-height: 1.7;
-}
-
-.medical-guidance-note ul {
-    list-style-type: disc;
-    padding-right: 25px;
+    font-size: 0.9em;
     margin-top: 10px;
+    float: left; /* جعل الزر يطفو لليسار */
 }
 
-.medical-guidance-note ul li {
-    margin-bottom: 5px;
+.delete-record-btn:hover {
+    background-color: #c82333;
 }
 
-/* Section Separator (HR) */
-.section-separator {
-    border: 0;
-    height: 1px;
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 123, 255, 0.75), rgba(0, 0, 0, 0));
-    margin: 25px 0;
+/* Clearfix for float */
+.record-item::after {
+    content: "";
+    display: table;
+    clear: both;
 }
 
-.measurement-group {
-    margin-bottom: 20px;
-    padding: 15px;
-    border: 1px solid #e0e0e0;
+/* New Tips Section Styling */
+.tips-section {
+    background-color: #e6f7ff; /* لون خلفية فاتح */
+    border: 1px solid #cceeff; /* حدود خفيفة */
     border-radius: 8px;
-    background-color: #fcfcfc;
-    display: block;
+    padding: 20px;
+    margin-bottom: 25px; /* مسافة أسفل القسم */
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-.measurement-group h4 {
-    color: #007bff;
+.tips-section h3 {
+    color: #0056b3; /* لون أزرق داكن للعنوان */
     margin-top: 0;
     margin-bottom: 15px;
     font-size: 1.3em;
-    border-bottom: 1px solid #cce5ff;
-    padding-bottom: 8px;
+}
+
+.tips-section p {
+    font-size: 1.1em;
+    color: #333;
+    line-height: 1.6;
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .input-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .field-container {
+        min-width: unset; /* إزالة الحد الأدنى للعرض للسماح بالمرونة الكاملة */
+        width: 100%; /* تأكد من أن الحقول تأخذ العرض الكامل */
+    }
+
+    .action-button {
+        width: calc(100% - 20px); /* تأكد من أن الأزرار تأخذ العرض الكامل مع مراعاة الهوامش */
+        margin-left: 0;
+        margin-bottom: 10px; /* إضافة مسافة بين الأزرار عند تكديسها */
+    }
 }

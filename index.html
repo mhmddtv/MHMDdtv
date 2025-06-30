@@ -15,8 +15,7 @@
       });
     }
   </script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-  <script src="Cairo-Black-normal.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </head>
 <body>
   <div class="container">
@@ -24,176 +23,240 @@
       <img src="iraq-diabetes-logo.png" alt="شعار كروب أطفال السكري النوع الأول في العراق" class="group-logo">
       <h1>متابعة السكري اليومية 📊</h1>
       <p class="group-name">كروب أطفال السكري النوع الأول في العراق 🇮🇶</p>
-      <p class="description">سجل قياسات السكر وجرعات الأنسولين لطفلك البطل.</p>
+      <p class="description">سجل قياسات السكر وجرعات الأنسولين لطفلك وتابع تقدمه بسهولة وفعالية.</p>
+    </div>
+
+    <div class="tips-section">
+        <h3>نصيحة اليوم ✨</h3>
+        <p id="dailyTip"></p>
     </div>
 
     <div class="input-section">
-      <h2>📝 تسجيل قياسات جديدة:</h2>
-      <label for="entryDate">التاريخ العام لليوم:</label>
-      <input type="date" id="entryDate">
+        <label for="entryDate">تاريخ اليوم:</label>
+        <input type="date" id="entryDate">
 
-      <hr>
-      <h3>قياسات السكر والأنسولين والكارب:</h3>
-
-      <div class="measurement-group">
-          <div class="measurement-row">
-              <label for="insulinSlow">أنسولين بطيء (وحدة):</label>
-              <input type="number" id="insulinSlow" placeholder="مثلاً 10">
-              <label for="timeInsulinSlow">وقت الأنسولين البطيء:</label>
-              <input type="time" id="timeInsulinSlow">
-          </div>
-      </div>
-
-      <div class="measurement-group">
-          <h4>سكر صائم / فطور:</h4>
-          <div class="measurement-row">
-              <label for="glucoseFasting">سكر صائم (ملغ/دل):</label>
-              <input type="number" id="glucoseFasting" placeholder="مثلاً 100">
-              <label for="timeFasting">وقت صائم:</label>
-              <input type="time" id="timeFasting">
-          </div>
-          <div class="measurement-row">
-              <label for="insulinRapidFasting">أنسولين سريع (وحدة):</label>
-              <input type="number" id="insulinRapidFasting" placeholder="مثلاً 5">
-              <label for="carbBreakfast">كارب الفطور (غرام):</label>
-              <input type="number" id="carbBreakfast" placeholder="مثلاً 30">
-          </div>
-      </div>
-
-      <div class="measurement-group">
-          <h4>سكر بعد الفطور بساعتين:</h4>
-          <div class="measurement-row">
-              <label for="glucosePostBreakfast">سكر بعد الفطور بساعتين (ملغ/دل):</label>
-              <input type="number" id="glucosePostBreakfast" placeholder="مثلاً 150">
-              <label for="timePostBreakfast">وقت بعد الفطور بساعتين:</label>
-              <input type="time" id="timePostBreakfast">
-          </div>
-          <div class="measurement-row">
-              <label for="insulinRapidPostBreakfast">أنسولين سريع (وحدة):</label>
-              <input type="number" id="insulinRapidPostBreakfast" placeholder="مثلاً 3">
-          </div>
-      </div>
-
-      <div class="measurement-group">
-          <h4>سكر قبل الغداء / غداء:</h4>
-          <div class="measurement-row">
-              <label for="glucosePreLunch">سكر قبل الغداء (ملغ/دل):</label>
-              <input type="number" id="glucosePreLunch" placeholder="مثلاً 90">
-              <label for="timePreLunch">وقت قبل الغداء:</label>
-              <input type="time" id="timePreLunch">
-          </div>
-          <div class="measurement-row">
-              <label for="insulinRapidPreLunch">أنسولين سريع (وحدة):</label>
-              <input type="number" id="insulinRapidPreLunch" placeholder="مثلاً 6">
-              <label for="carbLunch">كارب الغداء (غرام):</label>
-              <input type="number" id="carbLunch" placeholder="مثلاً 50">
-          </div>
-      </div>
-
-      <div class="measurement-group">
-          <h4>سكر بعد الغداء بساعتين:</h4>
-          <div class="measurement-row">
-              <label for="glucosePostLunch">سكر بعد الغداء بساعتين (ملغ/دل):</label>
-              <input type="number" id="glucosePostLunch" placeholder="مثلاً 130">
-              <label for="timePostLunch">وقت بعد الغداء بساعتين:</label>
-              <input type="time" id="timePostLunch">
-          </div>
-          <div class="measurement-row">
-              <label for="insulinRapidPostLunch">أنسولين سريع (وحدة):</label>
-              <input type="number" id="insulinRapidPostLunch" placeholder="مثلاً 2">
-          </div>
-      </div>
-
-      <div class="measurement-group">
-          <h4>سكر قبل العشاء / عشاء:</h4>
-          <div class="measurement-row">
-              <label for="glucosePreDinner">سكر قبل العشاء (ملغ/دل):</label>
-              <input type="number" id="glucosePreDinner" placeholder="مثلاً 110">
-              <label for="timePreDinner">وقت قبل العشاء:</label>
-              <input type="time" id="timePreDinner">
-          </div>
-          <div class="measurement-row">
-              <label for="insulinRapidPreDinner">أنسولين سريع (وحدة):</label>
-              <input type="number" id="insulinRapidPreDinner" placeholder="مثلاً 4">
-              <label for="carbDinner">كارب العشاء (غرام):</label>
-              <input type="number" id="carbDinner" placeholder="مثلاً 35">
-          </div>
-      </div>
-
-      <div class="measurement-group">
-          <h4>سكر بعد العشاء بساعتين:</h4>
-          <div class="measurement-row">
-              <label for="glucosePostDinner">سكر بعد العشاء بساعتين (ملغ/دل):</label>
-              <input type="number" id="glucosePostDinner" placeholder="مثلاً 160">
-              <label for="timePostDinner">وقت بعد العشاء بساعتين:</label>
-              <input type="time" id="timePostDinner">
-          </div>
-          <div class="measurement-row">
-              <label for="insulinRapidPostDinner">أنسولين سريع (وحدة):</label>
-              <input type="number" id="insulinRapidPostDinner" placeholder="مثلاً 1">
-          </div>
-      </div>
-
-      <div class="measurement-group">
-          <h4>سكر قبل النوم:</h4>
-          <div class="measurement-row">
-              <label for="glucoseBedtime">سكر قبل النوم (ملغ/دل):</label>
-              <input type="number" id="glucoseBedtime" placeholder="مثلاً 120">
-              <label for="timeBedtime">وقت قبل النوم:</label>
-              <input type="time" id="timeBedtime">
-          </div>
-          <div class="measurement-row">
-              <label for="insulinRapidBedtime">أنسولين سريع (وحدة):</label>
-              <input type="number" id="insulinRapidBedtime" placeholder="مثلاً 0">
-          </div>
-      </div>
-
-      <div class="measurement-group">
-          <h4>سكر منتصف الليل:</h4>
-          <div class="measurement-row">
-              <label for="glucoseMidnight">سكر منتصف الليل (ملغ/دل):</label>
-              <input type="number" id="glucoseMidnight" placeholder="مثلاً 115">
-              <label for="timeMidnight">وقت منتصف الليل:</label>
-              <input type="time" id="timeMidnight">
-          </div>
-          <div class="measurement-row">
-              <label for="insulinRapidMidnight">أنسولين سريع (وحدة):</label>
-              <input type="number" id="insulinRapidMidnight" placeholder="مثلاً 0">
-          </div>
-      </div>
-
-      <div id="statusMessage" class="status-message"></div>
-
-      <button onclick="saveEntry()">تسجيل القياسات والجرعات 📝</button>
-
-      <div class="medical-note">
-        <p>
-          <img src="https://via.placeholder.com/20" alt="ملاحظة" style="vertical-align: middle;">
-          <strong>ملاحظة طبية هامة:</strong> <br>
-          يجب دائمًا استشارة أخصائي السكري أو الطبيب لتحديد جرعات الأنسولين الصحيحة لطفلك،<br>
-          وعدم الاعتماد الكلي على هذا التطبيق لاتخاذ قرارات طبية حقيقية.<br>
-        </p>
-      </div>
-    </div>
-
-    <div class="input-section">
-      <h2>📊 سجل القياسات والجرعات:</h2>
-      <div id="mealHistoryContainer" class="meal-history">
+        <div class="measurement-block">
+            <h4>الصيام</h4>
+            <div class="input-row">
+                <div class="field-container">
+                    <label for="glucoseFasting">القياس (ملغ/دل):</label>
+                    <input type="number" id="glucoseFasting" placeholder="مثلاً 100">
+                </div>
+                <div class="field-container">
+                    <label for="timeFasting">الوقت:</label>
+                    <input type="time" id="timeFasting">
+                </div>
+                <div class="field-container">
+                    <label for="insulinRapidFasting">وحدات الأنسولين:</label>
+                    <input type="number" id="insulinRapidFasting" placeholder="مثلاً 0">
+                </div>
+            </div>
         </div>
-      <div class="export-buttons">
-          <button class="clear-button" onclick="clearMealHistory()">مسح السجل بالكامل⚠️</button>
-          <button onclick="exportToCsv()">تصدير إلى Excel (CSV) 📊</button>
-          <button onclick="exportToPdf()">تصدير إلى PDF 📄</button>
-      </div>
+
+        <div class="measurement-block">
+            <h4>قبل الفطور</h4>
+            <div class="input-row">
+                <div class="field-container">
+                    <label for="glucosePreBreakfast">القياس (ملغ/دل):</label>
+                    <input type="number" id="glucosePreBreakfast" placeholder="مثلاً 90">
+                </div>
+                <div class="field-container">
+                    <label for="timePreBreakfast">الوقت:</label>
+                    <input type="time" id="timePreBreakfast">
+                </div>
+                <div class="field-container">
+                    <label for="insulinRapidPreBreakfast">وحدات الأنسولين:</label>
+                    <input type="number" id="insulinRapidPreBreakfast" placeholder="مثلاً 3">
+                </div>
+                <div class="field-container">
+                    <label for="carbsPreBreakfast">كمية الكارب (غرام):</label>
+                    <input type="number" id="carbsPreBreakfast" placeholder="مثلاً 30">
+                </div>
+            </div>
+        </div>
+
+        <div class="measurement-block">
+            <h4>بعد الفطور (بساعتين)</h4>
+            <div class="input-row">
+                <div class="field-container">
+                    <label for="glucosePostBreakfast">القياس (ملغ/دل):</label>
+                    <input type="number" id="glucosePostBreakfast" placeholder="مثلاً 140">
+                </div>
+                <div class="field-container">
+                    <label for="timePostBreakfast">الوقت:</label>
+                    <input type="time" id="timePostBreakfast">
+                </div>
+            </div>
+        </div>
+
+        <div class="measurement-block">
+            <h4>قبل الغداء</h4>
+            <div class="input-row">
+                <div class="field-container">
+                    <label for="glucosePreLunch">القياس (ملغ/دل):</label>
+                    <input type="number" id="glucosePreLunch" placeholder="مثلاً 90">
+                </div>
+                <div class="field-container">
+                    <label for="timePreLunch">الوقت:</label>
+                    <input type="time" id="timePreLunch">
+                </div>
+                <div class="field-container">
+                    <label for="insulinRapidPreLunch">وحدات الأنسولين:</label>
+                    <input type="number" id="insulinRapidPreLunch" placeholder="مثلاً 4">
+                </div>
+                <div class="field-container">
+                    <label for="carbsPreLunch">كمية الكارب (غرام):</label>
+                    <input type="number" id="carbsPreLunch" placeholder="مثلاً 40">
+                </div>
+            </div>
+        </div>
+
+        <div class="measurement-block">
+            <h4>بعد الغداء (بساعتين)</h4>
+            <div class="input-row">
+                <div class="field-container">
+                    <label for="glucosePostLunch">القياس (ملغ/دل):</label>
+                    <input type="number" id="glucosePostLunch" placeholder="مثلاً 140">
+                </div>
+                <div class="field-container">
+                    <label for="timePostLunch">الوقت:</label>
+                    <input type="time" id="timePostLunch">
+                </div>
+            </div>
+        </div>
+
+        <div class="measurement-block">
+            <h4>قبل العشاء</h4>
+            <div class="input-row">
+                <div class="field-container">
+                    <label for="glucosePreDinner">القياس (ملغ/دل):</label>
+                    <input type="number" id="glucosePreDinner" placeholder="مثلاً 90">
+                </div>
+                <div class="field-container">
+                    <label for="timePreDinner">الوقت:</label>
+                    <input type="time" id="timePreDinner">
+                </div>
+                <div class="field-container">
+                    <label for="insulinRapidPreDinner">وحدات الأنسولين:</label>
+                    <input type="number" id="insulinRapidPreDinner" placeholder="مثلاً 3">
+                </div>
+                <div class="field-container">
+                    <label for="carbsPreDinner">كمية الكارب (غرام):</label>
+                    <input type="number" id="carbsPreDinner" placeholder="مثلاً 30">
+                </div>
+            </div>
+        </div>
+
+        <div class="measurement-block">
+            <h4>بعد العشاء (بساعتين)</h4>
+            <div class="input-row">
+                <div class="field-container">
+                    <label for="glucosePostDinner">القياس (ملغ/دل):</label>
+                    <input type="number" id="glucosePostDinner" placeholder="مثلاً 140">
+                </div>
+                <div class="field-container">
+                    <label for="timePostDinner">الوقت:</label>
+                    <input type="time" id="timePostDinner">
+                </div>
+            </div>
+        </div>
+
+        <div class="measurement-block">
+            <h4>قبل النوم</h4>
+            <div class="input-row">
+                <div class="field-container">
+                    <label for="glucoseBedtime">القياس (ملغ/دل):</label>
+                    <input type="number" id="glucoseBedtime" placeholder="مثلاً 120">
+                </div>
+                <div class="field-container">
+                    <label for="timeBedtime">الوقت:</label>
+                    <input type="time" id="timeBedtime">
+                </div>
+                <div class="field-container">
+                    <label for="insulinRapidBedtime">وحدات الأنسولين:</label>
+                    <input type="number" id="insulinRapidBedtime" placeholder="مثلاً 0">
+                </div>
+            </div>
+        </div>
+
+        <div class="measurement-block">
+            <h4>المنتصف (أنسولين سريع)</h4>
+            <div class="input-row">
+                <div class="field-container">
+                    <label for="glucoseMidnight">القياس (ملغ/دل):</label>
+                    <input type="number" id="glucoseMidnight" placeholder="مثلاً 120">
+                </div>
+                <div class="field-container">
+                    <label for="timeMidnight">الوقت:</label>
+                    <input type="time" id="timeMidnight">
+                </div>
+                <div class="field-container">
+                    <label for="insulinRapidMidnight">وحدات الأنسولين:</label>
+                    <input type="number" id="insulinRapidMidnight" placeholder="مثلاً 0">
+                </div>
+            </div>
+        </div>
+
+        <div class="measurement-block">
+            <h4>جرعة الأنسولين البطيء (طويل المفعول)</h4>
+            <div class="input-row">
+                <div class="field-container">
+                    <label for="insulinSlow">وحدات الأنسولين:</label>
+                    <input type="number" id="insulinSlow" placeholder="مثلاً 10">
+                </div>
+                <div class="field-container">
+                    <label for="timeInsulinSlow">الوقت:</label>
+                    <input type="time" id="timeInsulinSlow">
+                </div>
+            </div>
+        </div>
+
+        <div class="measurement-block">
+            <h4>نسبة الكاربوهيدرات (إذا توفرت)</h4>
+            <div class="input-row">
+                <div class="field-container">
+                    <label for="carbRatio">نسبة الكارب:</label>
+                    <input type="text" id="carbRatio" placeholder="مثلاً 10:1 (لكل 10g كارب وحدة أنسولين)">
+                </div>
+            </div>
+        </div>
+
+        <div class="measurement-block">
+            <h4>بعد السكر المرتفع / المنخفض</h4>
+            <div class="input-row">
+                <div class="field-container">
+                    <label for="bloodSugarAfter">قياس السكر بعد:</label>
+                    <input type="number" id="bloodSugarAfter" placeholder="مثلاً 120">
+                </div>
+                <div class="field-container">
+                    <label>سبب الأنسولين السريع الإضافي:</label>
+                    <div class="radio-group">
+                        <input type="radio" id="purposeHigh" name="insulinRapidPurpose" value="ارتفاع سكر" checked>
+                        <label for="purposeHigh">ارتفاع سكر</label>
+                        <input type="radio" id="purposeMeal" name="insulinRapidPurpose" value="وجبة">
+                        <label for="purposeMeal">وجبة</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button id="saveEntryBtn" class="action-button">حفظ</button>
+        <button id="clearFormBtn" class="action-button clear-button">مسح الحقول</button>
+        <button id="exportImageBtn" class="action-button">تصدير السجلات كصورة</button>
     </div>
 
-    <div id="deleteConfirmationModal" class="modal">
-      <div class="modal-content">
-        <span class="close-button" onclick="closeModal()">&times;</span>
-        <p>هل أنت متأكد أنك تريد مسح جميع السجلات؟ لا يمكن التراجع عن هذا الإجراء.</p>
-        <button class="confirm-delete-button" onclick="confirmClear()">نعم، مسح الكل</button>
-        <button class="cancel-delete-button" onclick="closeModal()">إلغاء</button>
-      </div>
+    <div id="statusMessage" class="status-message"></div>
+
+    <div class="records-section">
+        <h2>السجلات المحفوظة</h2>
+        <div class="filter-controls">
+            <label for="filterDate">تصفية حسب التاريخ:</label>
+            <input type="date" id="filterDate">
+            <button id="clearFilterBtn" class="action-button clear-button">مسح التصفية</button>
+        </div>
+        <div id="recordsDisplay" class="records-display">
+            </div>
+        <button id="deleteAllRecordsBtn" class="action-button delete-all-button">مسح جميع السجلات</button>
     </div>
 
   </div>
