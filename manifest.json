@@ -1,9 +1,0 @@
-{
-  "name": "تطبيق متابعة السكري لأبطالنا",
-  "short_name": "متابعة السكري",
-  "description": "تطبيق بسيط لمتابعة قياسات السكري للأطفال في العراق، مع حفظ البيانات محلياً.",
-  "start_url": "/DiabetesTracker/index.html",
-  "display": "standalone",
-  "background_color": "#e6f3ff",
-  "theme_color": "#007bff"
-}
